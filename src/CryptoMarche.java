@@ -31,7 +31,7 @@ public class CryptoMarche {
         for ( Portefeuille p : portefeuilles)
         {
             if (p.getProprietaire().equals(proprietaire))
-                capital += p.getMontant();
+                capital += p.getMontant() * p.getMonnaie().getValeurDeJeton();
         }
         
         return capital;
@@ -39,7 +39,7 @@ public class CryptoMarche {
 
     /**
      * Cette fonction recherche sur le marché tous les portefeuilles 
-     * d'un type de devise et calcule le volume total de capital de 
+     *d'u n type de devise et calcule le volume total de capital de 
      * cette devise sur le marché 
      * @param monnaie
      * @return capital total en circulation de la cryptomonnaie (en euros).
@@ -50,8 +50,8 @@ public class CryptoMarche {
         
         for ( Portefeuille p : portefeuilles)
         {
-            if ( p.getMonnaie() == monnaie)
-                capitalMonnaie += p.getMontant();
+            if ( p.getMonnaie().getNom() == monnaie.getNom())
+                capitalMonnaie += p.getMontant() * p.getMonnaie().getValeurDeJeton();
         }
 
         return capitalMonnaie;
